@@ -12,33 +12,54 @@
                 <nav aria-label="Global">
                     <ul class="flex items-center gap-6 text-sm">
                         <li>
-                            <a class="text-primary transition hover:text-secondary" href="{{ path('home') }}"> Accueil </a>
+                            <a class="text-primary transition hover:text-secondary" href="{{ path('home') }}">
+                                Accueil </a>
                         </li>
                         <li>
-                            <a class="text-primary transition hover:text-secondary" href="{{ path('home') }}"> Recettes </a>
+                            <a class="text-primary transition hover:text-secondary" href="{{ path('home') }}">
+                                Recettes </a>
                         </li>
                     </ul>
                 </nav>
             </div>
 
             <div class="flex items-center gap-4">
-                <div class="sm:flex sm:gap-4">
-                    <a
-                            class="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white shadow"
-                            href="{{ path('home') }}"
-                    >
-                        Se connecter
-                    </a>
 
-                    <div class="hidden sm:flex">
+                {% if app.user == false %}
+                    <div class="sm:flex sm:gap-4">
                         <a
-                                class="rounded-md bg-secondary px-5 py-2.5 text-sm font-medium text-white"
-                                href="{{ path('home') }}"
+                                class="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white shadow"
+                                href="{{ path('login') }}"
                         >
-                            S'enregistrer
+                            Se connecter
                         </a>
+
+                        <div class="hidden sm:flex">
+                            <a
+                                    class="rounded-md bg-secondary px-5 py-2.5 text-sm font-medium text-white"
+                                    href="{{ path('register') }}"
+                            >
+                                S'enregistrer
+                            </a>
+                        </div>
                     </div>
-                </div>
+                    {% else %}
+                        <div class="sm:flex sm:gap-4">
+                            <a
+                                    class="rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white shadow"
+                                    href="{{ path('login') }}"
+                            >
+                                Profil
+                            </a>
+                            <a
+                                    class="rounded-md bg-danger hover:bg-white hover:text-danger px-5 py-2.5 text-sm font-medium text-white shadow"
+                                    href="{{ path('logout') }}"
+                            >
+                                déconnexion
+                            </a>
+                        </div>
+                {% endif %}
+
 
                 <div class="block md:hidden">
                     <button class="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
@@ -50,7 +71,7 @@
                                 stroke="currentColor"
                                 stroke-width="2"
                         >
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </button>
                 </div>

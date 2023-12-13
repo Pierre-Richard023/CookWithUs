@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Mail de réinitialisation du mot de passe envoyé
+{% endblock %}
+
+{% block body %}
+    <div class="flex items-center justify-center px-4 py-4">
+        <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
+            <div class="md:flex w-full">
+                <div class="hidden md:block w-1/2 py-10 px-10">
+                    <img src="{{ asset('images/recipes.svg') }}" alt="recipes logo">
+                </div>
+                <div class="w-full md:w-1/2 py-10 px-5 md:px-10">
+
+
+                    <div class="text-xl p-4 text-slate-700">
+                        <small class=" ">
+                            Si un compte correspondant à votre adresse mail existe, un mail vient d'être envoyé contenant un
+                            lien que vous pouvez utiliser pour réinitialiser votre mot de passe.
+                        </small>
+                        <small>
+                            Ce lien expirera dans
+                            <strong class="text-secondary">
+                                {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+                            </strong>
+                        </small>
+                    </div>
+                    <div class="text-xl p-4 mb-2 text-slate-700">
+                        <small>
+                            Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam ou
+                        </small>
+                    </div>
+                    <div class="w-full item-center">
+                        <a class="text-white px-8 py-3 font-semibold rounded-full bg-secondary w-full" href="{{ path('forgot.password.request') }}">Réessayer</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

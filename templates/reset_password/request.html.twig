@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Réinitialisez votre mot de passe
+{% endblock %}
+
+{% block body %}
+    <div class="flex items-center justify-center h-full px-4 py-4">
+        <div class="text-gray-500  shadow-xl w-full overflow-hidden" style="max-width:1000px">
+            <div class="md:flex w-full">
+                <div class="hidden md:block w-1/2 py-10 px-10">
+                    <img src="{{ asset('images/recipes.svg') }}" alt="recipes logo">
+                </div>
+                <div class="w-full md:w-1/2 py-10 px-5 md:px-10">
+
+
+                    {% for flash_error in app.flashes('reset_password_error') %}
+                        <div class="font-regular relative mb-4 block w-full rounded-lg bg-red-500 p-4 text-base leading-5 text-white opacity-100">{{ flash_error }}</div>
+                    {% endfor %}
+
+                    <h2 class="text-2xl font-semibold text-gray-700 text-center">Réinitialisez votre mot de passe</h2>
+
+
+                    {{ form_start(requestForm) }}
+
+                    <div class="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 mt-4">
+
+                        <div class="col-span-full">
+                            {{ form_row(requestForm.email) }}
+                        </div>
+
+                        <div class="col-span-full sm:col-span-6 text-italic text-bold">
+                            <small class=" ">
+                                Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot
+                                de passe.
+                            </small>
+                        </div>
+
+                        <div class="col-span-full sm:col-span-6">
+                            <button class="bg-primary w-full text-white px-8 py-3 font-semibold rounded-full">
+                                Réinitialisez votre mot de passe
+                            </button>
+                        </div>
+                    </div>
+
+                    {{ form_end(requestForm) }}
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}
